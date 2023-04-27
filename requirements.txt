@@ -1,0 +1,10 @@
+torch == 1.12.1
+torchvision == 0.13.1
+numpy >= 1.19.5
+pillow == 9.0.0
+setuptools~=60.2.0
+tqdm~=4.62.3
+opencv-python
+scikit-image
+matplotlib
+gdown
