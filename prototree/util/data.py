@@ -40,12 +40,6 @@ def get_data(
                          train_dir=train_path,
                          project_dir=project_path,
                          test_dir=dir_path+'/CUB_200_2011/dataset/test_full')
-    # FIXME : Remove
-    if dataset == 'CUB-small':
-        return get_birds(augment=True,
-                         train_dir=dir_path+'/CUB_200_2011/dataset/train_small',
-                         project_dir=dir_path+'/CUB_200_2011/dataset/train_small',
-                         test_dir=dir_path+'/CUB_200_2011/dataset/train_small')
     if dataset == 'CARS':
         return get_cars(
             augment=True,

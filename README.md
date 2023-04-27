@@ -19,6 +19,7 @@ python prototree/preprocess_data/download_birds.py
 python prototree/preprocess_data/cub.py
 python prototree/preprocess_data/download_cars.py
 python prototree/preprocess_data/cars.py
+python protopnet/img_aug.py
 ```
 2. Download a ResNet50 model pretrained on the INaturalist dataset:
 ```bash
@@ -120,4 +121,30 @@ finalize_tree.py --tree_dir ./runs/prototree/checkpoints/latest/ \
 ```
 
 ## Experiments on ProtoPNet
+### Training a model
+To train a ProtoPNet, follow the instructions from the original code and edit the file
+`protopnet/settings.py` (see `protopnet/README.txt`).
 
+### Compute prototype/test image statistics
+```bash
+cd protopnet
+python get_prototype_stats.py \
+  --model saved_models/resnet50/birds/trained_model.pth \
+  --base_arch resnet50 \
+  --dataset ../data/CUB_200_2011/dataset/train_crop/ \
+  --segm_dir ../data/CUB_200_2011/dataset/train_crop_seg/ \
+  --proj_dir saved_models/resnet50/birds/proj \
+  --device cuda:0 \ 
+  --output protopnet_birds_r50_proto_stats.csv \ 
+  --target_areas 0.001 0.02 0.001
+python get_inference_stats.py \
+  --model saved_models/resnet50/birds/trained_model.pth \
+  --base_arch resnet50 \
+  --dataset ../data/CUB_200_2011/dataset/test_full/ \
+  --segm_dir ../data/CUB_200_2011/dataset/test_full_seg/ \
+  --device cuda:0 \
+  --output saved_models/resnet50/birds/protopnet_birds_r50_inference_stats.csv \
+  --target_areas 0.001 0.02 0.001
+```
+To generate statistics for Stanford Cars, simply replace the path to dataset.
+Note that `--segm_dir` is not available for Stanford Cars.

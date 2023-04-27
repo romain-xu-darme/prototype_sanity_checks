@@ -167,7 +167,7 @@ def get_args() -> argparse.Namespace:
                         type=str,
                         metavar='<name>',
                         required=True,
-                        choices=['CUB-200-2011', 'CUB-small', 'CARS'], # FIXME: Remove CUB-small
+                        choices=['CUB-200-2011', 'CARS'],
                         help='Data set on which the ProtoTree has been trained')
     parser.add_argument('--use-segmentation',
                         action='store_true',
