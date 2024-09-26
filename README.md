@@ -1,3 +1,6 @@
+This repository is no longer maintained. For an updated version, please check out the [CaBRNet](https://github.com/aiser-team/cabrnet) library :)
+
+
 # Sanity checks for patch visualisation in prototype-based image classification
 This repository contains the code developed for the experiments presented in the paper "Sanity checks for patch visualisation in prototype-based image classification", accepted at [XAI4CV](https://xai4cv.github.io/workshop_cvpr23) (2nd Explainable AI for Computer Vision Workshop at CVPR'23), including our modifications to the original code of:
 
